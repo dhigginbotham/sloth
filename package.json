@@ -17,7 +17,13 @@
   "dependencies": {
     "ms": "~0.6.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "expect.js": "~0.2.0",
+    "mocha": "~1.15.1"
+  },
+  "scripts": {
+    "test": "mocha test -R spec -t 4000"
+  },
   "bugs": {
     "url": "https://github.com/dhigginbotham/sloth/issues",
     "email": "davehigginbotham@gmail.com"
