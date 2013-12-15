@@ -1,0 +1,29 @@
+{
+  "name": "sloth",
+  "description": "Sloth is a request rate limiter middleware and internal use module",
+  "version": "0.0.2",
+  "private": false,
+  "keywords": [
+    "rate limiter",
+    "express.js",
+    "middleware"
+  ],
+  "main": "lib/index.js",
+  "author": {
+    "name": "David Higginbotham",
+    "email": "davehigginbotham@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ms": "~0.6.2"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/dhigginbotham/sloth/issues",
+    "email": "davehigginbotham@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dhigginbotham/sloth.git"
+  }
+}
