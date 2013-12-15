@@ -4,7 +4,8 @@ var expect = require('expect.js'),
 describe('sloth simple ratelimit test', function () {
 
   var s = new sloth({
-    delay: '35ms'
+    delay: '35ms',
+    after: 0
   });
 
   it('should be able to inherit values from options', function (done) {
