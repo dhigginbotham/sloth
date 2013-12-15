@@ -1,29 +1,29 @@
 var expect = require('expect.js'),
     sloth = require('../lib');
 
-describe('sloth setup test', function () {
+describe('sloth simple ratelimit test', function () {
 
   var s = new sloth({
-    delay: '3s'
+    delay: '35ms'
   });
 
   it('should be able to inherit values from options', function (done) {
 
-    expect(s.delay).to.be('3s');
+    expect(s.delay).to.be('35ms');
 
     return done();
 
   });
 
-  it('should slow down firing a function until the delay is met', function (done) {
+  it('should fire for the first time quickly', function (done) {
 
     var time = Date.now();
 
-    var fireMeLater = function (orig) {
+    var fireMeFirst = function (orig) {
 
       var t = Date.now();
 
-      expect(t - orig).to.be.within(0, 100);
+      expect(t - orig).to.be.within(0, 20);
 
       return done();
 
@@ -33,7 +33,7 @@ describe('sloth setup test', function () {
 
       return fn(time);
 
-    }, fireMeLater);
+    }, fireMeFirst);
 
   });
 
@@ -45,7 +45,7 @@ describe('sloth setup test', function () {
 
       var t = Date.now();
 
-      expect(t - orig).to.be.within(3000, 3015);
+      expect(t - orig).to.be.within(35, 50);
 
       return done();
 
