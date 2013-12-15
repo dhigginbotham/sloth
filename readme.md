@@ -22,8 +22,10 @@ var doLater = function (orig) {
 
 var time = Date.now();
 
-sloth.mon(function (fn) {
-  return fn(time);
-}, doLater);
+sloth.limit(function () {
+
+  doLater(time);
+
+});
 
 ``` 

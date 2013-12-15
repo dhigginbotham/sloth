@@ -15,47 +15,29 @@ describe('sloth simple ratelimit test', function () {
 
   });
 
-  it('should fire for the first time quickly', function (done) {
+  it('should slow down fn firing', function (done) {
 
     var time = Date.now();
 
-    var fireMeFirst = function (orig) {
+    var doThisLater = function (t) {
 
-      var t = Date.now();
+      var ts = Date.now() - t;
 
-      expect(t - orig).to.be.within(0, 20);
-
+      expect(ts).to.be.within(35, 50);
+      
       return done();
 
     };
 
-    s.mon(function (fn) {
+    expect(Date.now() - time).to.be.within(0,20);
 
-      return fn(time);
+    s.limit(function () {
 
-    }, fireMeFirst);
+      expect(Date.now() - time).to.be.within(35,50);
 
-  });
+      return doThisLater(time);
 
-  it('should slow down every request after the first', function (done) {
-    
-    var time = Date.now();
-
-    var fireMeSecond = function (orig) {
-
-      var t = Date.now();
-
-      expect(t - orig).to.be.within(35, 50);
-
-      return done();
-
-    };
-
-    s.mon(function (fn) {
-
-      return fn(time);
-
-    }, fireMeSecond);
+    });
 
   });
 
