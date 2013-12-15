@@ -1,5 +1,7 @@
-## sloth
+## sloth function rate-limiter
 rate limit functions and enforce it with context.
+
+![sloth](http://i.imgur.com/YEZm3Pk.jpg?1)
 
 ### opts
 `delay` defaults to `25ms` uses the [`ms`](https://github.com/guille/ms.js) module for super easy time.
@@ -20,12 +22,17 @@ var doLater = function (orig) {
   return Date.now() - orig;
 };
 
-var time = Date.now();
+[1,2,3].forEach(function (item) {
+  
+  var time = Date.now();
 
-sloth.limit(function () {
+  sloth.limit(function () {
 
-  doLater(time);
+    doLater(time);
+
+  });
 
 });
+
 
 ``` 

@@ -42,4 +42,26 @@ describe('sloth simple ratelimit test', function () {
 
   });
 
+  it('should loop through items and fire at different times', function (done) {
+    
+    var ntime = [];
+
+    [1,2,3].forEach(function (item, i) {
+
+      var time = Date.now();
+
+      s.limit(function () {
+
+        ntime.push((Date.now() - time) * item);
+
+        expect(ntime[i]).to.be.within(0,500);
+
+        if (ntime.length == 3) return done();
+
+      });
+
+    });
+
+  });
+
 });
