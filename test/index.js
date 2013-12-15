@@ -4,13 +4,13 @@ var expect = require('expect.js'),
 describe('sloth simple ratelimit test', function () {
 
   var s = new sloth({
-    delay: '35ms',
-    after: 0
+    delay: '35',
+    after: 1
   });
 
   it('should be able to inherit values from options', function (done) {
 
-    expect(s.delay).to.be('35ms');
+    expect(s.delay).to.be('35');
 
     return done();
 
@@ -24,7 +24,7 @@ describe('sloth simple ratelimit test', function () {
 
       var ts = Date.now() - t;
 
-      expect(ts).to.be.within(35, 50);
+      expect(ts).to.be.within(0, 40);
       
       return done();
 
@@ -33,8 +33,6 @@ describe('sloth simple ratelimit test', function () {
     expect(Date.now() - time).to.be.within(0,20);
 
     s.limit(function () {
-
-      expect(Date.now() - time).to.be.within(35,50);
 
       return doThisLater(time);
 
@@ -54,7 +52,7 @@ describe('sloth simple ratelimit test', function () {
 
         ntime.push((Date.now() - time) * item);
 
-        expect(ntime[i]).to.be.within(0,500);
+        expect(ntime[i]).to.be.within(30,500);
 
         if (ntime.length == 3) return done();
 

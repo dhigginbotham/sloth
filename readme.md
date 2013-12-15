@@ -1,12 +1,9 @@
 ## sloth function rate-limiter
-rate limit functions and enforce it with context.
+rate limit functions, fires all timeouts at once and multiplies their delay by amount of requests. simple, fast, easy to use.
 
-![sloth](http://i.imgur.com/YEZm3Pk.jpg?1)
-
-### opts
-`delay` defaults to `25ms` uses the [`ms`](https://github.com/guille/ms.js) module for super easy time.
-
-`after` defaults to `1`, and doesn't start limiting until after the first request.
+### options
+- `delay` defaults to `25ms` uses the [`ms`](https://github.com/guille/ms.js) module for super easy time.
+- `after` defaults to `1`, and doesn't start limiting until after the first request.
 
 ### usage
 
@@ -34,5 +31,6 @@ var doLater = function (orig) {
 
 });
 
-
 ``` 
+### license
+![sloth](http://i.imgur.com/YEZm3Pk.jpg?1) MIT
